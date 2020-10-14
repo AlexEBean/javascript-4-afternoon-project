@@ -21,8 +21,8 @@
 let user = {
   username: "",
   email: "",
-  getUsername: function() {
-    return  this.username
+  getUsername: function () {
+    return this.username
   }
 }
 
@@ -45,7 +45,7 @@ function Animal(name, species, food) {
 }
 
 //Code Here
-let animal1 = new Animal ("Iggy", "dog", "coffee-flavored gum")
+const animal1 = new Animal ("Iggy", "Boston Terrier", "coffee-flavored gum")
 
 ////////// PROBLEM 3 //////////
 
@@ -64,7 +64,7 @@ let who = {
 }
 
 //Code Here
-let whoSaysHi = sayHi.bind(who)
+const whoSaysHi = sayHi.bind(who)
 
 ////////// PROBLEM 4 //////////
 
@@ -116,3 +116,4 @@ let family1 = new Family(2, 4, 1)
 
 // uncomment the line below and tell us what the context of "this" is for the instance of Family created above.
 let context4 = family1
+ 

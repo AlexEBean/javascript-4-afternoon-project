@@ -16,8 +16,8 @@
 
 // Code here
 function CarFactory (make, model) {
-  this.make = make;
-  this.model = model;
+  this.make = make,
+  this.model = model
 }
 
 ////////// PROBLEM 2 //////////
@@ -38,8 +38,7 @@ function Employee(name, email, hireDate) {
   */
   
   // Code here
-  
-let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
+  let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
 
   ////////// PROBLEM 3 //////////
   
@@ -63,17 +62,27 @@ let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
   */
   
   // Code here
-  function Car(make, model, year, move) {
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.move = 0;
-    this.moveCar = function (){
-     return this.move += 10
-    }
+  function Car (make, model, year) {
+    this.make = make
+    this.model = model
+    this.year = year
+    this.move = 0
+    this.moveCar = () => 
+      this.move += 10
   }
+// console.log(prius)
 
-
+  //  Without arrow function
+  // function Car (make, model, year) {
+  //   this.make = make
+  //   this.model = model
+  //   this.year = year
+  //   this.move = 0
+  //   this.moveCar = function () {
+  //     return this.move += 10
+  //   }
+  // }
+  
   ////////// PROBLEM 4 //////////
   
   /*
@@ -92,12 +101,11 @@ let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
   }
   
   // Code here
-  Movie.prototype.changeRating = function (number) {
-      this.rating = (this.rating + number)/2
-      return this.rating
+  Movie.prototype.changeRating = function(num) {
+    this.rating = (this.rating + num)/2
+    return this.rating
   }
-
-
+  
   ////////// PROBLEM 5 //////////
   
   // Write a constructor function called User. This function should take in 4 parameters called name, age, email, and savedPosts in that order. Name and email will be strings, age will be a number and savedPosts will be an array of objects. These objects will each have 3 properties: id (a number), title (a string), and rating (a number between 1 and 5). These objects are the posts that the user will have saved to their account.
@@ -106,26 +114,41 @@ let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
   
   // Code here
   function User (name, age, email, savedPosts) {
-    this.name = name;
-    this.age = age;
-    this.email = email;
-    this.savedPosts = savedPosts;
-
+    this.name = name
+    this.age = age
+    this.email = email
+    this.savedPosts = savedPosts
   }
 
   User.prototype.addSavedPost = function (id, title, rating) {
-      this.savedPosts.push({id, title, rating})
+    this.savedPosts.push({id, title, rating})
   }
-
+  
   ////////// PROBLEM 6 //////////
   
   // You will be using the constructor function you just created in problem 5.
   // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
   
   // Code here
-  User.prototype.removeSavedPost = function (id) {
-      this.savedPosts = this.savedPosts.filter(e => e.id !== id)
+  User.prototype.removeSavedPost = function(num){
+    for (i = 0; i< this.savedPosts.length; i++){
+      if (this.savedPosts[i].id === num){
+        this.savedPosts.splice(i, 1)
+      }
+    }
   }
+
+//  Also Works
+//  User.prototype.removeSavedPost = function(num){
+//   this.savedPosts = this.savedPosts.filter(e => e.id !== num)
+//  }
+
+//   Without arrow functions
+// User.prototype.removeSavedPost = function(num){
+// this.savedPosts = this.savedPosts.filter(function(element, index, array) {
+//   return element.id !== num
+//   })
+// }
 
   ////////// PROBLEM 7 //////////
   
@@ -133,7 +156,10 @@ let bob = new Employee("Bob", "bob@gmail.com", "01-02-98")
   // Write a prototype method for the User constructor function named changePostRating that will take in two number parameters. The first will be an id (a number) and the second will be the new rating (a number). Use the id to find the matching object in the savedPosts array. Once you find the matching object, update it's rating score with the new rating parameter.
   
   // Code here
-  User.prototype.changePostRating = function (id, newRating) {
-    let updated = this.savedPosts.find(e => e.id === id)
-    updated.rating = newRating
+  User.prototype.changePostRating = function(num, newRating) {
+    for (let i = 0; i < this.savedPosts.length; i++){
+      if (this.savedPosts[i].id === num) {
+        this.savedPosts[i].rating = newRating
+      }
+    }
   }
